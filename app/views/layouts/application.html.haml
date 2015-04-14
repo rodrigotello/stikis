@@ -1,0 +1,71 @@
+!!! 5
+%html(lang="en")
+  %head
+    %meta(charset="utf-8")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %meta(property="og:title" content="Stikis -  Easy notes everywhere")
+    %meta(property="og:url" content="http://stikis.co")
+    %meta(property="og:site_name" content="Stikis")
+    %meta(property="og:image" content="http://stikis.co/assets/stikis.jpg")
+    %meta(property="og:description" content="Stiki notes anywhere you go.")
+    %title= content_for?(:title) ? yield(:title) : "Stikis"
+    = csrf_meta_tags
+    / Le HTML5 shim, for IE6-8 support of HTML elements
+    /[if lt IE 9]
+      = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
+    = stylesheet_link_tag "application", :media => "all"
+    %link(href="/assets/favicon.ico" rel="shortcut icon")
+    %link(href="images/apple-touch-icon.png" rel="apple-touch-icon")
+    %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72")
+    %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114")
+    %link(href='http://fonts.googleapis.com/css?family=Schoolbell' rel='stylesheet' type='text/css')
+    %link(href='http://fonts.googleapis.com/css?family=Coming+Soon' rel='stylesheet' type='text/css')
+
+  %body(class="#{@body_class}")
+    - if logged_in?
+      %nav
+        .container-div
+          %a.logo(href="/") Stikis
+          %ul.nav.nav-pills.pull-right
+            %li.dropdown.active 
+              %a(href="#" class="dropdown-toggle" data-toggle="dropdown") 
+                %i.icon-user
+                #{current_user.nickname}
+                %b.caret
+              %ul.dropdown-menu
+                %li= link_to "Profile", user_profile_path(current_user.nickname)
+                %li= link_to "Logout", logout_path
+
+    #main-content
+      #main-content-inner
+      .container-div
+        = yield
+
+    
+    %footer.span12
+      .foter-inner
+        %nav.navbar.navbar-fixed-bottom
+          .navbar-inner
+            .container-div
+              %ul.social.nav
+                %li
+                  %a(href="#") Twitter
+                %li
+                  %a(href="#") Facebook
+              %ul.social.nav
+                %li 
+                  &copy; Stikis.co 2012
+                %li
+                  %a(href="#") Terms of Service
+                %li
+                  %a(href="#") Privacy Policy
+                
+                  
+        
+    /
+      Javascripts
+      \==================================================
+    / Placed at the end of the document so the pages load faster
+    = javascript_include_tag "application"
+    = yield :local_scripts
+

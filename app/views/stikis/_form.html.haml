@@ -1,0 +1,31 @@
+= form_for @stiki do |f|
+  -if @stiki.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@stiki.errors.count, "error")} prohibited this stiki from being saved:"
+      %ul
+        - @stiki.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :content
+    = f.text_area :content
+  .field
+    = f.label :area
+    = f.number_field :area
+  .field
+    = f.label :positionx
+    = f.text_field :positionx
+  .field
+    = f.label :positiony
+    = f.text_field :positiony
+  .field
+    = f.label :color
+    = f.text_field :color
+  .field
+    = f.label :board_id
+    = f.number_field :board_id
+  .field
+    = f.label :user_id
+    = f.text_field :user_id
+  .actions
+    = f.submit 'Save'

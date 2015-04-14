@@ -1,0 +1,31 @@
+%h1 Listing stikis
+
+%table
+  %tr
+    %th Content
+    %th Area
+    %th Positionx
+    %th Positiony
+    %th Color
+    %th Board
+    %th User
+    %th
+    %th
+    %th
+
+  - @stikis.each do |stiki|
+    %tr
+      %td= stiki.content
+      %td= stiki.area
+      %td= stiki.positionx
+      %td= stiki.positiony
+      %td= stiki.color
+      %td= stiki.board_id
+      %td= stiki.user_id
+      %td= link_to 'Show', stiki
+      %td= link_to 'Edit', edit_stiki_path(stiki)
+      %td= link_to 'Destroy', stiki, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Stiki', new_stiki_path

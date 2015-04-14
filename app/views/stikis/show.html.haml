@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Content:
+  = @stiki.content
+%p
+  %b Area:
+  = @stiki.area
+%p
+  %b Positionx:
+  = @stiki.positionx
+%p
+  %b Positiony:
+  = @stiki.positiony
+%p
+  %b Color:
+  = @stiki.color
+%p
+  %b Board:
+  = @stiki.board_id
+%p
+  %b User:
+  = @stiki.user_id
+
+= link_to 'Edit', edit_stiki_path(@stiki)
+\|
+= link_to 'Back', stikis_path

@@ -1,0 +1,42 @@
+- content_for :local_scripts do
+  = javascript_include_tag "jqui"
+  = javascript_include_tag "limit"
+  = javascript_include_tag "stikis"
+
+%p#notice= notice
+
+#stikis-wrapper
+  = link_to ' Add Stiki', new_stiki_path, :id => "addstiki", :class => "icon-plus"
+    
+  .board-title
+    .tape
+    %h1= @board.name
+    .bottom http://www.fuzzimo.com/illustrator-tutorial-make-a-vector-torn-paper/
+  #stikis(user="#{current_user.id}")
+    - @stikis.each do |s|
+      .stiki( sid="#{s.id}" px="#{s.positionx}" py ="#{s.positiony}" c="#{stiki_color(s.color)}" s="#{stiki_area(s.area)}")
+        .close.hover 
+          %i.icon-remove-sign
+        %span.content #{s.content}
+        .col.options.hover
+          %ul
+            - available_colors.each_with_index do |c, i|
+              - if c == stiki_color(s.color)
+                %li( num="#{i}"  class="active" style="background:##{c}") #{c}
+              - else
+                %li( num="#{i}"  style="background:##{c}") #{c}
+        .size.options.hover
+          %ul
+            - available_sizes.each_with_index do |a, i|
+              - if a == stiki_area(s.area)
+                %li( num="#{i}" class="active" ) #{a}
+              - else
+                %li( num="#{i}" ) #{a}
+          
+
+
+%input(type="hidden" id="board" value="#{@board.id}")
+
+:javascript
+  var available_colors = #{available_colors}
+  var available_sizes = #{available_sizes}

@@ -1,0 +1,33 @@
+body{
+  padding-top:5px !important;
+  padding-bottom:85px;
+  background:url(/assets/bgs/noise.png);
+}
+
+a.logo{
+  width:115px;
+  height:80px;
+  display:inline-block;
+  background:url(/assets/logo_115_80.png) no-repeat;
+  text-indent:-99999px;
+  overflow:hidden;
+}
+
+a.logo:hover{
+  background-color:transparent;
+}
+
+.container-div{
+  width:1200px;
+  margin-left:auto;
+  margin-right:auto;
+  clear:both;
+}
+
+footer .navbar-inner{
+  height:80px;
+}
+
+.nav.social{
+  clear:both;
+}

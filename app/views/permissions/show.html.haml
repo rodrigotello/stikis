@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @permission.user_id
+%p
+  %b Board:
+  = @permission.board_id
+
+= link_to 'Edit', edit_permission_path(@permission)
+\|
+= link_to 'Back', permissions_path

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  content: MyText
+  area: 1
+  positionx: 9.99
+  positiony: 9.99
+  color: 
+  board_id: 1
+  user_id: 
+
+two:
+  content: MyText
+  area: 1
+  positionx: 9.99
+  positiony: 9.99
+  color: 
+  board_id: 1
+  user_id: 
